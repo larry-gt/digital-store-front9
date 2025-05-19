@@ -1,4 +1,23 @@
+import { useState } from "react";
+import Produto from "../components/Produto";
+
 const Produtos = () => {
+    const [filtroMarca, setFiltroMarca] = useState([]);
+    const [filtroCategoria, setFiltroCategoria] = useState([]);
+    const [filtroGenero, setFiltroGenero] = useState([]);
+    const [filtroEstado, setFiltroEstado] = useState("Novo");
+
+    console.log(filtroMarca);
+
+    function verificarMarca(marca) {
+        if (filtroMarca.includes(marca)) {
+            setFiltroMarca([...filtroMarca.filter(cadaMarca => cadaMarca != marca)]);
+            return;
+        }
+        setFiltroMarca([...filtroMarca, marca]);
+    }
+
+
     return (
         <div className="xl:px-[100px] xl:pt-[40px] xl:pb-[140px]">
             {/* ordenação */}
@@ -20,24 +39,102 @@ const Produtos = () => {
                     <h6 className="mb-[10px] font-bold text-grafite">Marca</h6>
                     <div className="grid gap-[10px]">
                         <label className="flex gap-[10px] items-center">
-                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            <input
+                                className="w-[22px] h-[22px] accent-rosa"
+                                type="checkbox"
+                                onChange={() => verificarMarca("Adidas")}
+                            />
                             Adidas
                         </label>
                         <label className="flex gap-[10px] items-center">
-                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            <input
+                                className="w-[22px] h-[22px] accent-rosa"
+                                type="checkbox"
+                                onChange={() => verificarMarca("Balenciaga")}
+                            />
                             Balenciaga
                         </label>
                         <label className="flex gap-[10px] items-center">
-                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            <input
+                                className="w-[22px] h-[22px] accent-rosa"
+                                type="checkbox"
+                                onChange={() => verificarMarca("Nike")}
+                            />
                             Nike
                         </label>
                         <label className="flex gap-[10px] items-center">
-                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            <input
+                                className="w-[22px] h-[22px] accent-rosa"
+                                type="checkbox"
+                                onChange={() => verificarMarca("Puma")}
+                            />
                             Puma
                         </label>
                     </div>
+
+                    <h6 className="mb-[10px] font-bold text-grafite mt-4">Categoria</h6>
+                    <div className="grid gap-[10px]">
+                        <label className="flex gap-[10px] items-center">
+                            <input
+                                className="w-[22px] h-[22px] accent-rosa"
+                                type="checkbox"
+                            />
+                            Esporte e Lazer
+                        </label>
+                        <label className="flex gap-[10px] items-center">
+                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            Casual
+                        </label>
+                        <label className="flex gap-[10px] items-center">
+                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            Utilitário
+                        </label>
+                        <label className="flex gap-[10px] items-center">
+                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            Corrida
+                        </label>
+                    </div>
+
+                    <h6 className="mb-[10px] font-bold text-grafite mt-4">Gênero</h6>
+                    <div className="grid gap-[10px]">
+                        <label className="flex gap-[10px] items-center">
+                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            Masculino
+                        </label>
+                        <label className="flex gap-[10px] items-center">
+                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            Feminino
+                        </label>
+                        <label className="flex gap-[10px] items-center">
+                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            Unissex
+                        </label>
+                    </div>
+
+                    <h6 className="mb-[10px] font-bold text-grafite mt-4">Estado</h6>
+                    <div className="grid gap-[10px]">
+                        <label className="flex gap-[10px] items-center">
+                            <input className="w-[22px] h-[22px] accent-rosa" type="radio" />
+                            Novo
+                        </label>
+                        <label className="flex gap-[10px] items-center">
+                            <input className="w-[22px] h-[22px] accent-rosa" type="radio" />
+                            Usado
+                        </label>
+                    </div>
+                </div>
+
+                {/* produtos */}
+                <div className="grid grid-cols-3 gap-[14px]">
+                    <Produto />
+                    <Produto />
+                    <Produto />
+                    <Produto />
+                    <Produto />
+                    <Produto />
                 </div>
             </div>
+
         </div>
     );
 }

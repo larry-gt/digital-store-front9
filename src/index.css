@@ -7,18 +7,15 @@
     --color-azul-claro: #B5B6F2;
     --color-azul: #4200FF;
     --color-grafite: #474747;
+    --color-cinza: #8f8f8f;
     --color-cinza-claro: #CCCCCC;
     --color-amarelo: #F6AA1C;
+    --color-verde: #E7FF86;
 }
 
 * {
-    /* margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0; */
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
-    text-decoration: none;
 }
 
 body{
