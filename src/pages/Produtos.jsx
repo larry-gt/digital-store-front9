@@ -6,6 +6,7 @@ const Produtos = () => {
     const [filtroCategoria, setFiltroCategoria] = useState([]);
     const [filtroGenero, setFiltroGenero] = useState([]);
     const [filtroEstado, setFiltroEstado] = useState("Novo");
+    const [produtos, setProdutos] = useState([]);
 
     console.log(filtroMarca);
 
@@ -15,6 +16,20 @@ const Produtos = () => {
             return;
         }
         setFiltroMarca([...filtroMarca, marca]);
+    }
+    function verificarCategoria(categoria) {
+        if (filtroCategoria.includes(categoria)) {
+            setFiltroCategoria([...filtroCategoria.filter(cadaCategoria => cadaCategoria != categoria)]);
+            return;
+        }
+        setFiltroCategoria([...filtroCategoria, categoria]);
+    }
+    function verificarGenero(genero) {
+        if (filtroGenero.includes(genero)) {
+            setFiltroGenero([...filtroGenero.filter(cadaGenero => cadaGenero != genero)]);
+            return;
+        }
+        setFiltroGenero([...filtroGenero, genero]);
     }
 
 
@@ -78,19 +93,31 @@ const Produtos = () => {
                             <input
                                 className="w-[22px] h-[22px] accent-rosa"
                                 type="checkbox"
+                                onChange={() => setFiltroCategoria("Esporte e lazer")}
+                            checked={filtroEstado == "Esporte e lazer"}
                             />
                             Esporte e Lazer
                         </label>
                         <label className="flex gap-[10px] items-center">
-                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" 
+                            onChange={() => setFiltroCategoria("Casual")}
+                            checked={filtroCategoria == "Casual"}
+                            
+                            />
                             Casual
                         </label>
                         <label className="flex gap-[10px] items-center">
-                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox"
+                            onChange={() => setFiltroCategoria("Utilitário")}
+                            checked={filtroCategoria == "Utilitário"}
+                            />
                             Utilitário
                         </label>
                         <label className="flex gap-[10px] items-center">
-                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox" />
+                            <input className="w-[22px] h-[22px] accent-rosa" type="checkbox"
+                            onChange={() => setFiltroCategoria("Corrida")}
+                            checked={filtroCategoria == "Corrida"}
+                            />
                             Corrida
                         </label>
                     </div>
@@ -114,11 +141,17 @@ const Produtos = () => {
                     <h6 className="mb-[10px] font-bold text-grafite mt-4">Estado</h6>
                     <div className="grid gap-[10px]">
                         <label className="flex gap-[10px] items-center">
-                            <input className="w-[22px] h-[22px] accent-rosa" type="radio" />
+                            <input className="w-[22px] h-[22px] accent-rosa" type="radio"
+                            onChange={() => setFiltroEstado("Novo")}
+                            checked={filtroEstado == "Novo"}
+                            />
                             Novo
                         </label>
                         <label className="flex gap-[10px] items-center">
-                            <input className="w-[22px] h-[22px] accent-rosa" type="radio" />
+                            <input className="w-[22px] h-[22px] accent-rosa" type="radio" 
+                            onChange={() => setFiltroEstado("usado")}
+                            checked={filtroEstado == "Usado"}
+                            />
                             Usado
                         </label>
                     </div>
